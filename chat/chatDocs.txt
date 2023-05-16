@@ -1,0 +1,7 @@
+Conversation Protocol
+
+First user username = ayo, second user username = yusuf ,third user username = aminat
+group_name for convo between yusuf and aminat will be 'conv_aminat_yusuf (sorted alphabetically)
+group_nate for convo between ayo and yusuf will be 'conv_ayo_yusuf' (sorted alpebetically)
+For every connection to the websocket there must be a token key attached to verify the user
+ 
