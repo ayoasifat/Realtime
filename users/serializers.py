@@ -1,16 +1,9 @@
 from django.conf import settings
-from django.contrib.auth import authenticate, get_user_model
-from rest_framework import exceptions, serializers,validators
-from allauth.account.adapter import get_adapter
-from allauth.account import app_settings as allauth_settings
-from allauth.utils import email_address_exists, get_username_max_length
-from django.core.exceptions import ValidationError as DjangoValidationError
-from allauth.account.utils import setup_user_email
-from django.utils.translation import gettext_lazy as _
-from .utils import setup_user_mobile    
+from django.contrib.auth import get_user_model
+from rest_framework import serializers,validators
+from django.utils.translation import gettext_lazy as _ 
 from  phonenumber_field.serializerfields import PhoneNumberField
-from django.urls import exceptions as url_exceptions
-from .models import MobileNumber,Payments
+from .models import Payments
 from django.conf import settings
 from rest_framework.authtoken.models import Token
 
