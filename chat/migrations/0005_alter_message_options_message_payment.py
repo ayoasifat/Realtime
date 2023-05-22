@@ -17,6 +17,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='message',
             name='payment',
-            field=models.DecimalField(blank=True, default=0),
+            field=models.DecimalField(decimal_places=10, default=0, max_digits=20),
         ),
     ]
