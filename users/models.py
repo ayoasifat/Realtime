@@ -10,7 +10,7 @@ class CustomUserModel(AbstractUser):
     verified = models.BooleanField(default=False)
     display_name = models.CharField(max_length=20,blank=True,null=True)
     status = models.CharField(max_length=10,default='',blank=True)
-    photo = models.ImageField(upload_to='profile pictures/',default=None,blank=True)
+    photo = models.ImageField(upload_to='profile pictures/',default='default_user_photo.jpg',blank=True)
     wallet = models.DecimalField(max_digits=20,decimal_places=2,default=0)
 
     def __str__(self):
