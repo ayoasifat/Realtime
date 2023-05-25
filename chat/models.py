@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.core.validators import FileExtensionValidator
+from cloudinary_storage.storage import RawMediaCloudinaryStorage,VideoMediaCloudinaryStorage
 import uuid
 
 userModel = get_user_model()
@@ -21,8 +22,8 @@ class Message(models.Model):
     content = models.TextField()
     payment = models.DecimalField(max_digits=20,decimal_places=2,default=None,blank=True,null=True)
     picture = models.ImageField(upload_to='photos/',default=None,null=True,blank=True,)
-    file = models.FileField(upload_to='files/',null=True,blank=True,validators=[FileExtensionValidator(allowed_extensions=['mp3'])])
-    video = models.FileField(upload_to='videos/',null=True,blank=True,validators=[FileExtensionValidator(allowed_extensions=['mp4'])])
+    file = models.FileField(upload_to='files/',null=True,blank=True,validators=[FileExtensionValidator(allowed_extensions=['mp3'])],storage=RawMediaCloudinaryStorage())
+    video = models.FileField(upload_to='videos/',null=True,blank=True,validators=[FileExtensionValidator(allowed_extensions=['mp4'])],storage=VideoMediaCloudinaryStorage())
     duration = models.DecimalField(max_digits=7,decimal_places=5,default=None,blank=True,null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
     conversation = models.ForeignKey(Conversation,on_delete=models.CASCADE,related_name='conversation')
