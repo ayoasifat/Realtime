@@ -33,19 +33,19 @@ class ChatConsumer(WebsocketConsumer):
         if (type=="payment"):
             amount = text_data['amount']
             async_to_sync(self.channel_layer.group_send)(
-            self.conversation_name, {"type": "payment","from_user":self.user.username,"payment":amount})
+            self.conversation_name, {"type": "payment","from_user":self.user.username,"payment":amount,"content":"Payment 💵"})
         elif (type=="file"):
             file = text_data['file']
             async_to_sync(self.channel_layer.group_send)(
-            self.conversation_name, {"type": "file","from_user":self.user.username,"file":file})
+            self.conversation_name, {"type": "file","from_user":self.user.username,"file":file,"content":"Audio 🎤"})
         elif (type=="video"):
             video = text_data['video']
             async_to_sync(self.channel_layer.group_send)(
-            self.conversation_name, {"type": "video","from_user":self.user.username,"video":video})
+            self.conversation_name, {"type": "video","from_user":self.user.username,"video":video,"content":"Video 📹"})
         elif (type=="picture"):
             photo = text_data['picture']
             async_to_sync(self.channel_layer.group_send)(
-            self.conversation_name, {"type": "picture","from_user":self.user.username,"picture":photo})
+            self.conversation_name, {"type": "picture","from_user":self.user.username,"picture":photo,"content":"Photo 📸"})
         else:
             message = text_data['message']
             Message.objects.create(from_user=self.user,to_user=self.get_receiver(),content=message,conversation=self.conversation) 
